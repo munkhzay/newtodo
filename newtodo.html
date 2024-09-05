@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewTodo</title>
+    <link rel="stylesheet" href="./newtodo.css" />
+  </head>
+  <body>
+    <div class="enterTask">
+      <div class="entertext">Enter task</div>
+
+      <input
+        class="editnamename"
+        type="text"
+        id="input"
+        placeholder="   task name..."
+      />
+      <select class="selectStatus" id="selectStatus">
+        <option class="option" id="" value="">Select status</option>
+        <option class="option" id="todo" value="todo">To do</option>
+        <option class="option" value="inprogress">In progress</option>
+        <option class="option" value="done">Done</option>
+        <option class="option" value="blocked">Blocked</option>
+      </select>
+      <button class="subbtn" id="submitBtn">Submit</button>
+    </div>
+    <div class="editTaskk">
+      <div class="entertext">Edit task</div>
+
+      <input
+        class="editnamename"
+        type="text2"
+        id="input2"
+        placeholder="   task name..."
+      />
+      <select class="selectStatus" id="selectStatus2">
+        <option class="option" value="">Select status</option>
+        <option class="option" value="todo2">To do</option>
+        <option class="option" value="inprogress2">In progress</option>
+        <option class="option" value="done2">Done</option>
+        <option class="option" value="blocked2">Blocked</option>
+      </select>
+      <button class="subbtn" id="submitBtn2">Submit</button>
+    </div>
+    <!-- <div class="task">
+      <input type="checkbox" ${isChecked} />
+      <p>${text}</p>
+      <div>
+        <img src="../todo.img/Frame (1).png" />
+        <img src="../todo.img/Frame.png" />
+      </div>
+    </div> -->
+    <div class="todo">
+      <div class="card1">
+        <div id="card" class="framecontainer">
+          <div class="frame-1">
+            <div class="rec-home">
+              <div class="rectangle-1"></div>
+              <div class="text-1">To do</div>
+            </div>
+            <div class="number1"></div>
+          </div>
+          <div class="frame2"></div>
+        </div>
+      </div>
+      <div class="card1">
+        <div id="card2" class="framecontainer">
+          <div class="frame-1">
+            <div class="rec-home">
+              <div class="rectangle-1-2"></div>
+              <div class="text-1">In Progress</div>
+            </div>
+            <div class="number1"></div>
+          </div>
+          <div class="frame2"></div>
+        </div>
+      </div>
+      <div class="card1">
+        <div id="card3" class="framecontainer">
+          <div class="frame-1">
+            <div class="rec-home">
+              <div class="rectangle-1-3"></div>
+              <div class="text-1">Done</div>
+            </div>
+            <div class="number1"></div>
+          </div>
+          <div class="frame2"></div>
+        </div>
+      </div>
+      <div class="card1">
+        <div id="card4" class="framecontainer">
+          <div class="frame-1">
+            <div class="rec-home">
+              <div class="rectangle-1-4"></div>
+              <div class="text-1">Blocked</div>
+            </div>
+            <div class="number1"></div>
+          </div>
+          <div class="frame2"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./newtodo.js"></script>
+</html>
