@@ -7,7 +7,7 @@ let selectStatus = document.getElementById("selectStatus");
 let taskbutton = document.createElement("button");
 taskbutton.innerText = "Add Task";
 taskbutton.setAttribute("class", "taskbutton");
-let body = document.getElementsByTagName("body");
+let body = document.getElementsByTagName("div");
 body[0].appendChild(taskbutton);
 let submitBtn = document.getElementById("submitBtn");
 
