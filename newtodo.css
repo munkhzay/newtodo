@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   /* position: relative; */
-  background-color: #101010;
+  background-color: #1a1a1a;
   /* box-sizing: border-box */
   /* height: 100vh; */
 }
@@ -75,14 +75,14 @@
   line-height: 19.36px;
 }
 .editTaskk {
-  background-color: #1a1a1a;
+  background-color: #101010;
   width: 370px;
   height: 376px;
   border: 1px, solid black;
   color: darkgray;
   position: absolute;
   top: 150px;
-  right: 50%;
+  right: 40%;
   z-index: 2;
   display: flex;
   flex-direction: row;
@@ -106,13 +106,13 @@
   color: darkgray;
   position: absolute;
   top: 150px;
-  right: 50%;
+  right: 40%;
   z-index: 2;
   display: flex;
   flex-direction: row;
   border-radius: 10px;
   border-width: 1px;
-  border-color: #1a1a1a;
+  border-color: #333333;
   /* border-radius: 19px, solid, #999999; */
   display: none;
 }
@@ -121,7 +121,7 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 29.05px;
-  background-color: #1a1a1a;
+  background-color: #101010;
   margin-top: 40px;
   margin-left: 40px;
   border-radius: 5px, solid, #999999;
@@ -166,7 +166,7 @@
   /* top: 200px;
   left: 550px; */
   grid-template-columns: auto auto auto auto;
-  column-gap: 20px;
+  /* column-gap: 20px; */
   /* margin-left: 50px;
   margin-right: 50px; */
   /* justify-content: center; */
@@ -180,24 +180,35 @@
   height: 672px;
   /* margin-top: 24px; */
   padding: 20px;
-  background-color: #1a1a1a;
+  background-color: #101010;
   border-radius: 10px;
+  margin-left: 60px;
 }
 .framecontainer {
   padding: 20px;
   border-radius: 12px, solid, #333333;
-  background-color: #1a1a1a;
+  background-color: #101010;
 }
 .frame-1 {
   /* height: 42px; */
   display: flex;
   justify-content: space-between;
-  background-color: #1a1a1a;
+  background-color: #101010;
+}
+.frame3 {
+  flex-direction: column;
+  gap: 10px;
+  background-color: #101010;
+}
+.frame2 {
+  flex-direction: column;
+  gap: 10px;
+  background-color: #101010;
 }
 .rec-home {
   display: flex;
   justify-content: flex-start;
-  background-color: #1a1a1a;
+  background-color: #101010;
 }
 
 .checkbox {
@@ -250,36 +261,38 @@
   width: 200px;
   padding-bottom: 10px;
   line-height: 21.78px;
-  background-color: #1a1a1a;
+  background-color: #101010;
 }
 .number1 {
   color: #999999;
   z-index: 2;
+  background-color: #101010;
 }
 
 .task {
   display: flex;
   justify-content: space-between;
 
-  background-color: #101010;
+  border-width: 3;
+  background-color: #1a1a1a;
   border-radius: 5px;
   margin-top: 20px;
   padding: 15px;
 }
 .edit {
   margin-right: 5px;
-  background-color: #101010;
+  background-color: #1a1a1a;
 }
 .text {
   color: #d9d9d9;
-  background-color: #101010f0;
+  background-color: #1a1a1a;
   font-size: 14px;
   line-height: 14.52px;
   font-weight: 400;
 }
 .icons {
-  background-color: #101010;
+  background-color: #1a1a1a;
 }
 .trash {
-  background-color: #101010;
+  background-color: #1a1a1a;
 }

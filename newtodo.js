@@ -53,36 +53,71 @@ let input = document.getElementById("input");
 let editTaskk = document.getElementsByClassName("editTaskk");
 
 //edittask
-function showEditModal(id) {
-  editid = id;
+// function showEditModal(id) {
+//   editid = id;
 
-  let taskIndex = tasks.findIndex((task) => task.id === id);
-  taskIndex = tasks[taskIndex];
-  let selectStatusEdit = selectStatus.value;
-  let inputedit = input.value;
-  let input2 = (document.getElementById("input2").value = inputedit);
-  let selectStatus2 = (document.getElementById("selectStatus2").value =
-    selectStatusEdit);
-  console.log(selectStatus2);
-  console.log(input2);
-  console.log(taskIndex);
-  editTaskk[0].style.display = "block";
-  // modal haruulna
-  rendertasks();
-  console.log(taskIndex);
+//   let taskIndex = tasks.findIndex((task) => task.id === id);
+//   taskIndex = tasks[taskIndex];
+//   let selectStatusEdit = selectStatus.value;
+//   let inputedit = input.value;
+//   let input2 = (document.getElementById("input2").value = inputedit);
+//   let selectStatus2 = (document.getElementById("selectStatus2").value =
+//     selectStatusEdit);
+//   console.log(selectStatus2);
+//   console.log(input2);
+//   console.log(taskIndex);
+//   editTaskk[0].style.display = "block";
+//   // modal haruulna
+//   rendertasks();
+//   console.log(taskIndex);
+// }
+function showEditModal(id) {
+  editid = id; // Засвар хийх ID-г хадгална
+  let task = tasks.find((task) => task.id === id); // ID-аар task олох
+  if (!task) return; // Task байхгүй бол функцээс гарах
+
+  document.getElementById("input2").value = task.name; // Нэрийг оруулах
+  document.getElementById("selectStatus2").value = task.status; // Төлөвийг сонгох
+
+  editTaskk[0].style.display = "block"; // Засварлах модал харуулах
 }
 
 //edusubbutton
+// function editSubmitTask() {
+//   let input2 = document.getElementById("input2");
+//   input.value = input2.value;
+//   let selectStatus2 = document.getElementById("selectStatus2");
+//   selectStatus.value = selectStatus2.value;
+//   console.log(input);
+//   editTaskk[0].style.display = "none";
+//   rendertasks();
+// }
+// submitBtn2.onclick = editSubmitTask;
 function editSubmitTask() {
-  let input2 = document.getElementById("input2");
-  input.value = input2.value;
-  let selectStatus2 = document.getElementById("selectStatus2");
-  selectStatus.value = selectStatus2.value;
-  console.log(input);
-  editTaskk[0].style.display = "none";
-  rendertasks();
+  let task = tasks.find((task) => task.id === editid); // Засварлах task-ийг хайх
+  if (!task) return; // Task байхгүй бол функцээс гарах
+
+  // Input болон status сонгогчоос утгуудыг авах
+  task.name = document.getElementById("input2").value;
+  task.status = document.getElementById("selectStatus2").value;
+
+  editTaskk[0].style.display = "none"; // Засварлах модал нуух
+  rendertasks(); // Дэлгэцийг дахин рендерлэх
 }
+
 submitBtn2.onclick = editSubmitTask;
+
+function createTaskEditElement(id, text, checked) {
+  let isChecked = checked ? "checked" : "";
+  return `<div class="task">
+      <input type="radio" ${isChecked} />
+      <p class="text">${text}</p>
+      <div class="icons">
+        <img class="edit" onclick="showEditModal(${id})" src="../todo.img/Frame (1).png" />
+        <img class="trash" onclick="deleteTask(${id})" src="../todo.img/Frame.png" />
+      </div>
+    </div>`;
+}
 
 ///edittask
 //
@@ -122,41 +157,6 @@ submitBtn2.onclick = editSubmitTask;
 //   rendertasks();
 // }
 
-//
-// function deleteTask(id) {
-//   console.log(id);
-//   let taskIndex = tasks.findIndex((task) => {
-//     if (task.id === id) {
-//       return task;
-//     }
-//   });
-
-//   tasks.splice(taskIndex, 1);
-//   rendertasks();
-// }
-
-//
-// function deleteTask(id) {
-//   var task = tasks.find((id) => {
-//     if (task.id === id) {
-//       return task;
-//     }
-//     console.log(task);
-//     tasks.splice(task);
-//     rendertasks();
-//   });
-// }
-// function deleteTask(id) {
-//   let taskfilter = tasks.filter((task) => {
-//     if (task.id === id) {
-//       return task;
-//     }
-//   });
-//   tasks.remove(taskfilter);
-//   console.log(taskfilter);
-//   rendertasks();
-// }
-
 //subbutton
 function submitTask() {
   let tasktext = input.value;
@@ -175,16 +175,36 @@ function submitTask() {
 }
 submitBtn.onclick = submitTask;
 
+function submitEditTask() {
+  let tasktext = input2.value;
+  let taskselect = selectStatus2.value;
+  let taskId = Math.random();
+  let task = {
+    id: taskId,
+    name: tasktext,
+    status: taskselect,
+    isDone: false,
+  };
+  tasks.push(task);
+  rendertasks();
+  console.log(tasks);
+  _enterTask[0].style.display = "none";
+}
+submitBtn.onclick = submitTask;
 //rendertask
 function rendertasks() {
+  let todoNumber = 0;
+  let inProcessNumber = 0;
+  let doneNumber = 0;
+  let blockedNumber = 0;
   let todoTasksHTML = "";
   let inprogressTasksHTML = "";
   let doneTasksHTML = "";
   let blockedTaskHTML = "";
-  let todoNumber = "";
-  let inProcessNumber = "";
-  let blockedNumber = "";
-  let doneNumber = "";
+  // let todoNumber = "";
+  // let inProcessNumber = "";
+  // let blockedNumber = "";
+  // let doneNumber = "";
   let frame2 = document.getElementsByClassName("frame2");
   let number1 = document.getElementsByClassName("number1");
 
@@ -220,34 +240,3 @@ function rendertasks() {
   number1[3].innerHTML = blockedNumber;
 }
 rendertasks();
-
-//
-
-// let persons = [person2, person];
-
-// console.log({ personIndex });
-
-// let updatePersonData = {
-//   name: "Baatar",
-// };
-// persons[personIndex] = updatePersonData;
-
-// console.log(persons);
-
-// function editPerson(id, updateData){
-//   let personIndex = persons.findIndex((personitem) => {
-//     if (person.id === id) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   });
-//   persons[personIndex] = updateData
-
-// }
-
-// let updateData = {
-//   name: "Baatar"
-// }
-
-// editPerson(182371287312, updateData)
