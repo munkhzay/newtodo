@@ -3,7 +3,7 @@ let editid = null;
 let _enterTask = document.getElementsByClassName("enterTask");
 let selectStatus = document.getElementById("selectStatus");
 
-//taskbutton
+//Add-task-button
 let taskbutton = document.createElement("button");
 taskbutton.innerText = "Add Task";
 taskbutton.setAttribute("class", "taskbutton");
@@ -11,7 +11,7 @@ let body = document.getElementsByTagName("div");
 body[0].appendChild(taskbutton);
 let submitBtn = document.getElementById("submitBtn");
 
-// entertask
+//Enter-task-modal
 function enterTask() {
   let enterTask = document.getElementsByClassName("enterTask");
   let input = document.getElementById("input");
@@ -22,7 +22,7 @@ function enterTask() {
 }
 taskbutton.onclick = enterTask;
 
-/////createtask
+//Create-task
 function createTaskElement(id, text, checked) {
   let isChecked = checked ? "checked" : "";
   let taskHTML = `<div class="task">
@@ -36,7 +36,7 @@ function createTaskElement(id, text, checked) {
   return taskHTML;
 }
 
-/// deletetask
+//Delete-task
 function deleteTask(id) {
   console.log(tasks);
   console.log(id);
@@ -52,112 +52,35 @@ let submitBtn2 = document.getElementById("submitBtn2");
 let input = document.getElementById("input");
 let editTaskk = document.getElementsByClassName("editTaskk");
 
-//edittask
-// function showEditModal(id) {
-//   editid = id;
-
-//   let taskIndex = tasks.findIndex((task) => task.id === id);
-//   taskIndex = tasks[taskIndex];
-//   let selectStatusEdit = selectStatus.value;
-//   let inputedit = input.value;
-//   let input2 = (document.getElementById("input2").value = inputedit);
-//   let selectStatus2 = (document.getElementById("selectStatus2").value =
-//     selectStatusEdit);
-//   console.log(selectStatus2);
-//   console.log(input2);
-//   console.log(taskIndex);
-//   editTaskk[0].style.display = "block";
-//   // modal haruulna
-//   rendertasks();
-//   console.log(taskIndex);
-// }
+//Edit-modal
 function showEditModal(id) {
-  editid = id; // Засвар хийх ID-г хадгална
-  let task = tasks.find((task) => task.id === id); // ID-аар task олох
-  if (!task) return; // Task байхгүй бол функцээс гарах
-
-  document.getElementById("input2").value = task.name; // Нэрийг оруулах
-  document.getElementById("selectStatus2").value = task.status; // Төлөвийг сонгох
-
-  editTaskk[0].style.display = "block"; // Засварлах модал харуулах
+  editid = id;
+  let task = tasks.find((task) => task.id === id);
+  if (!task) {
+    alert("Task not found!");
+    return;
+  }
+  document.getElementById("input2").value = task.name;
+  document.getElementById("selectStatus2").value = task.status;
+  editTaskk[0].style.display = "block";
 }
 
-//edusubbutton
-// function editSubmitTask() {
-//   let input2 = document.getElementById("input2");
-//   input.value = input2.value;
-//   let selectStatus2 = document.getElementById("selectStatus2");
-//   selectStatus.value = selectStatus2.value;
-//   console.log(input);
-//   editTaskk[0].style.display = "none";
-//   rendertasks();
-// }
-// submitBtn2.onclick = editSubmitTask;
+//Edit-task
 function editSubmitTask() {
-  let task = tasks.find((task) => task.id === editid); // Засварлах task-ийг хайх
-  if (!task) return; // Task байхгүй бол функцээс гарах
+  let task = tasks.find((task) => task.id === editid);
+  if (!task) return;
 
-  // Input болон status сонгогчоос утгуудыг авах
   task.name = document.getElementById("input2").value;
   task.status = document.getElementById("selectStatus2").value;
 
-  editTaskk[0].style.display = "none"; // Засварлах модал нуух
-  rendertasks(); // Дэлгэцийг дахин рендерлэх
+  editTaskk[0].style.display = "none";
+  rendertasks();
+  x;
 }
 
 submitBtn2.onclick = editSubmitTask;
 
-function createTaskEditElement(id, text, checked) {
-  let isChecked = checked ? "checked" : "";
-  return `<div class="task">
-      <input type="radio" ${isChecked} />
-      <p class="text">${text}</p>
-      <div class="icons">
-        <img class="edit" onclick="showEditModal(${id})" src="../todo.img/Frame (1).png" />
-        <img class="trash" onclick="deleteTask(${id})" src="../todo.img/Frame.png" />
-      </div>
-    </div>`;
-}
-
-///edittask
-//
-// function editTask(id) {
-//   let indexEditTask = tasks.findIndex((task) => {
-//     if (task.id === id) return task;
-//   });
-//   tasks.splice(indexEditTask, 1);
-
-// }
-
-// function editsubtask() {
-//   let tasktext = input2.value;
-//   let taskselect = selectStatus2.value;
-//   let editid = taskId;
-//   let task2 = {
-//     id: taskId,
-//     name: tasktext2,
-//     status: taskselect2,
-//     isDone: false,
-//   };
-//   tasks.push(task2);
-//   console.log(task2);
-//   rendertasks();
-//   editTaskk[0].style.display = "none";
-// }
-// console.log(editsubtask);
-// submitBtn2.onclick = editsubtask;
-//
-// function editTask(id) {
-//   let edittaskIndex = tasks.findIndex((task) => {
-//     if (task.id === id) return task;
-//   });
-//   tasks[edittaskIndex] = submitTask();
-//   // _enterTask[0].style.display = "block";
-//   // tasks.splice(edittaskIndex);
-//   rendertasks();
-// }
-
-//subbutton
+//Submit-button
 function submitTask() {
   let tasktext = input.value;
   let taskselect = selectStatus.value;
@@ -175,23 +98,7 @@ function submitTask() {
 }
 submitBtn.onclick = submitTask;
 
-function submitEditTask() {
-  let tasktext = input2.value;
-  let taskselect = selectStatus2.value;
-  let taskId = Math.random();
-  let task = {
-    id: taskId,
-    name: tasktext,
-    status: taskselect,
-    isDone: false,
-  };
-  tasks.push(task);
-  rendertasks();
-  console.log(tasks);
-  _enterTask[0].style.display = "none";
-}
-submitBtn.onclick = submitTask;
-//rendertask
+//Render-task
 function rendertasks() {
   let todoNumber = 0;
   let inProcessNumber = 0;
@@ -201,10 +108,6 @@ function rendertasks() {
   let inprogressTasksHTML = "";
   let doneTasksHTML = "";
   let blockedTaskHTML = "";
-  // let todoNumber = "";
-  // let inProcessNumber = "";
-  // let blockedNumber = "";
-  // let doneNumber = "";
   let frame2 = document.getElementsByClassName("frame2");
   let number1 = document.getElementsByClassName("number1");
 
